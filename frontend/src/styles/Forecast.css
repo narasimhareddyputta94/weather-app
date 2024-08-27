@@ -1,0 +1,28 @@
+.forecast {
+    margin: 20px 0;
+}
+
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.forecast-day {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #e0f7fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.forecast-day h3 {
+    font-size: 1.4rem;
+    color: #00796b;
+    margin-bottom: 5px;
+}
+
+.forecast-day p {
+    font-size: 1.1rem;
+    color: #555;
+}

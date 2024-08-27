@@ -1,0 +1,17 @@
+.current-weather {
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #dbeaff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.current-weather h2 {
+    font-size: 1.8rem;
+    color: #0073e6;
+}
+
+.current-weather p {
+    font-size: 1.2rem;
+    color: #333;
+}
