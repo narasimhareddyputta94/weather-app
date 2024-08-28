@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/App.css';
+import './components/styles/App.css';
 import WeatherApp from './components/WeatherApp';
 
 function App() {
