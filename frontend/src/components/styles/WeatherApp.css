@@ -1,83 +1,74 @@
-/* WeatherApp.css */
-
-body {
-    background-color: #f0f4f8;
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+/* styles/WeatherApp.css */
 
 .weather-app {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+    background: #f5f5f5;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    width: 80%;
-    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    font-size: 2rem;
+.weather-app h1 {
+    font-size: 2.5em;
     margin-bottom: 20px;
+    color: #007bff;
     text-align: center;
-    color: #2c3e50;
 }
 
-.search-bar {
+.weather-app .search-bar {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
 
-.search-bar input {
-    width: 70%;
+.weather-app .search-bar input {
     padding: 10px;
-    font-size: 1rem;
-    border-radius: 5px;
+    font-size: 1em;
     border: 1px solid #ccc;
-    margin-right: 10px;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 400px;
 }
 
-.search-bar button {
-    padding: 10px 15px;
-    font-size: 1rem;
-    background-color: #3498db;
-    color: white;
+.weather-app .search-bar button {
+    padding: 10px 20px;
+    font-size: 1em;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
     cursor: pointer;
+    margin-left: 10px;
     transition: background-color 0.3s;
 }
 
-.search-bar button:hover {
-    background-color: #2980b9;
+.weather-app .search-bar button:hover {
+    background-color: #0056b3;
 }
 
-.current-weather, .forecast {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #ecf0f1;
+.weather-app p {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.weather-app .current-weather, .weather-app .forecast {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
-.current-weather h2, .forecast h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #34495e;
-}
-
-.weather-forecast-item {
+.weather-app .current-weather h2, .weather-app .forecast h2 {
+    font-size: 1.5em;
+    color: #007bff;
     margin-bottom: 10px;
-    padding: 10px;
-    background-color: #e1e5ea;
-    border-radius: 5px;
 }
 
-.weather-forecast-item p {
-    margin: 5px 0;
+.weather-app .current-weather p, .weather-app .forecast p {
+    font-size: 1.2em;
+    margin: 0;
 }
