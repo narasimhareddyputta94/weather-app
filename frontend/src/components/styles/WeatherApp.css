@@ -111,7 +111,7 @@
 /* Daily Forecast Styles */
 .forecast {
     width: 100%;
-    padding: 20px;
+    padding: 15px;
     border-radius: 12px;
     background-color: #e3f2fd;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
@@ -120,12 +120,12 @@
 .forecast-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
+    gap: 10px;
 }
 
 .forecast-row {
     background: #fff;
-    padding: 20px;
+    padding: 15px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
