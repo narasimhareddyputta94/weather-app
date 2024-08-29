@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/HourlyForecast.css';
 
-function groupByDate(hourlyData) {
+function groupByDate(hourlyData, selectedDay) {
     const grouped = {};
 
     hourlyData.time.forEach((time, index) => {
@@ -26,33 +26,33 @@ function groupByDate(hourlyData) {
         });
     });
 
-    return grouped;
+    const selectedDate = Object.keys(grouped)[selectedDay];
+    return grouped[selectedDate] || [];
 }
 
-function HourlyForecast({ data }) {
-    const groupedData = groupByDate(data);
+function HourlyForecast({ data, selectedDay }) {
+    const hourlyDataForSelectedDay = groupByDate(data, selectedDay);
+
+    if (hourlyDataForSelectedDay.length === 0) {
+        return <p>No hourly data available for this day.</p>;
+    }
 
     return (
         <div className="hourly-forecast">
             <h2>Hourly Weather Forecast</h2>
-            {Object.keys(groupedData).map((date, index) => (
-                <div key={index} className="hourly-day-group">
-                    <h3>{date}</h3>
-                    <div className="hourly-grid">
-                        {groupedData[date].map((hour, idx) => (
-                            <div key={idx} className="hourly-row">
-                                <p><strong>{hour.time}</strong></p>
-                                <p>Temp: {hour.temperature}°C</p>
-                                <p>Weather Code: {hour.weatherCode}</p>
-                                <p>Wind: {hour.windSpeed} km/h</p>
-                                <p>Humidity: {hour.humidity}%</p>
-                                <p>Cloud Cover: {hour.cloudCover}%</p>
-                                <p>UV Index: {hour.uvIndex}</p>
-                            </div>
-                        ))}
+            <div className="hourly-grid">
+                {hourlyDataForSelectedDay.map((hour, idx) => (
+                    <div key={idx} className="hourly-row">
+                        <p><strong>{hour.time}</strong></p>
+                        <p>Temp: {hour.temperature}°C</p>
+                        <p>Weather Code: {hour.weatherCode}</p>
+                        <p>Wind: {hour.windSpeed} km/h</p>
+                        <p>Humidity: {hour.humidity}%</p>
+                        <p>Cloud Cover: {hour.cloudCover}%</p>
+                        <p>UV Index: {hour.uvIndex}</p>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     );
 }

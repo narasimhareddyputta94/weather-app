@@ -2,14 +2,14 @@
 
 /* General Styles */
 .weather-app {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #333;
-    background: #f5f5f5;
-    max-width: 100%; /* Increased max-width */
+    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,48 +21,51 @@
     color: #007bff;
     text-align: center;
     width: 100%;
+    font-weight: 700;
 }
 
 /* Search Bar Styles */
 .weather-app .search-bar {
     width: 100%;
-    max-width: 600px; /* Limit width for better UX */
+    max-width: 600px;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
 }
 
 .weather-app .search-bar input {
-    padding: 10px;
-    font-size: 1em;
+    padding: 12px;
+    font-size: 1.1em;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 80%;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .weather-app .search-bar button {
-    padding: 10px 20px;
-    font-size: 1em;
+    padding: 12px 24px;
+    font-size: 1.1em;
     border: none;
     border-radius: 4px;
     background-color: #007bff;
     color: #fff;
     cursor: pointer;
     margin-left: 10px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .weather-app .search-bar button:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 /* Current Weather Styles */
 .current-weather {
     width: 100%;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     background-color: #dbeaff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     text-align: center;
 }
@@ -71,75 +74,94 @@
 .hourly-forecast {
     width: 100%;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     background-color: #e6ecf0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
 .hourly-day-group h3 {
-    font-size: 1.5em;
+    font-size: 1.6em;
     color: #007bff;
     margin-bottom: 15px;
     text-align: left;
+    font-weight: 500;
 }
 
 .hourly-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjusted column size */
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
 }
 
 .hourly-row {
     background: #fff;
-    padding: 10px;
+    padding: 15px;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hourly-row:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Daily Forecast Styles */
 .forecast {
     width: 100%;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     background-color: #e3f2fd;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-
 }
 
 .forecast-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjusted column size */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px;
 }
 
 .forecast-row {
     background: #fff;
-    padding: 15px;
+    padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.forecast-row:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .forecast-date {
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: bold;
     color: #007bff;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .forecast-detail p {
-    margin: 5px 0;
-    font-size: 1em;
+    margin: 10px 0;
+    font-size: 1.1em;
+    font-weight: 400;
 }
+
 @media (max-width: 768px) {
+    .forecast-grid, .hourly-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+
     .weather-app {
-        max-width: 100%;
         padding: 10px;
     }
 
-    .forecast-grid, .hourly-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    .forecast-row {
+        flex-direction: column;
+        align-items: center;
     }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
+import './styles/Forecast.css';
 
-function Forecast({ data }) {
+function Forecast({ data, selectedDay, onDayClick }) {
     if (!data || !data.time || !Array.isArray(data.time)) {
         return <p>No forecast data available.</p>;
     }
@@ -10,7 +11,11 @@ function Forecast({ data }) {
             <h2>7-Day Weather Forecast</h2>
             <div className="forecast-grid">
                 {data.time.map((date, index) => (
-                    <div key={index} className="forecast-row">
+                    <div
+                        key={index}
+                        className={`forecast-row ${selectedDay === index ? 'selected' : ''}`}
+                        onClick={() => onDayClick(index)}
+                    >
                         <div className="forecast-date">
                             <h3>{new Date(date).toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })}</h3>
                         </div>

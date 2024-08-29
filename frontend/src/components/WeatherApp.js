@@ -9,6 +9,7 @@ function WeatherApp() {
     const [weatherData, setWeatherData] = useState(null);
     const [forecastData, setForecastData] = useState(null);
     const [hourlyData, setHourlyData] = useState(null);
+    const [selectedDay, setSelectedDay] = useState(null); // State for selected day
     const [error, setError] = useState(null);
 
     const handleSearch = (location) => {
@@ -69,14 +70,29 @@ function WeatherApp() {
             });
     };
 
+    const handleDayClick = (dayIndex) => {
+        setSelectedDay(dayIndex);
+    };
+
     return (
         <div className="weather-app">
             <h1>Weather App</h1>
             <SearchBar onSearch={handleSearch} />
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {weatherData && <CurrentWeather data={weatherData} />}
-            {hourlyData && <HourlyForecast data={hourlyData} />}
-            {forecastData && <Forecast data={forecastData} />}
+            {forecastData && (
+                <Forecast
+                    data={forecastData}
+                    selectedDay={selectedDay}
+                    onDayClick={handleDayClick}
+                />
+            )}
+            {hourlyData && selectedDay !== null && (
+                <HourlyForecast
+                    data={hourlyData}
+                    selectedDay={selectedDay}
+                />
+            )}
         </div>
     );
 }

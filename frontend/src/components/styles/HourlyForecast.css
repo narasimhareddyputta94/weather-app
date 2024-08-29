@@ -1,13 +1,13 @@
-/* General Styling */
 .hourly-forecast {
-    background: #f0f4f8;
+    width: 100%;
+    max-width: 1200px;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
+    background-color: #f0f4f8;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
-/* Date Headers */
 .hourly-day-group h3 {
     font-size: 1.5em;
     color: #007bff;
@@ -15,28 +15,37 @@
     text-align: center;
 }
 
-/* Hourly Grid */
 .hourly-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust columns based on screen size */
     gap: 10px;
 }
 
-/* Each Hourly Row */
 .hourly-row {
     background: #e6ecf0;
     padding: 10px;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.hourly-row:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
 }
 
 .hourly-row p {
     margin: 5px 0;
     font-size: 0.9em;
+    color: #333;
 }
 
 .hourly-row strong {
     font-size: 1.1em;
     color: #007bff;
+}
+@media (max-width: 768px) {
+    .hourly-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
 }

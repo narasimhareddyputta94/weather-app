@@ -1,17 +1,15 @@
 .current-weather {
-    margin: 20px 0;
-    padding: 10px;
+    width: 100%; /* Use the full width of the parent container */
+    max-width: 1200px; /* Set a maximum width to avoid overly stretched content */
+    padding: 20px;
     border-radius: 8px;
     background-color: #dbeaff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.current-weather h2 {
-    font-size: 1.8rem;
-    color: #0073e6;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .current-weather p {
-    font-size: 1.2rem;
-    color: #333;
+    font-size: 1.1em; /* Slightly increase font size for readability */
+    color: #007bff; /* Consistent color for text */
 }
