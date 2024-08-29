@@ -1,14 +1,18 @@
-/* styles/WeatherApp.css */
+/* WeatherApp.css */
 
+/* General Styles */
 .weather-app {
     font-family: Arial, sans-serif;
     color: #333;
     background: #f5f5f5;
-    max-width: 800px;
+    max-width: 100%; /* Increased max-width */
     margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .weather-app h1 {
@@ -16,12 +20,16 @@
     margin-bottom: 20px;
     color: #007bff;
     text-align: center;
+    width: 100%;
 }
 
+/* Search Bar Styles */
 .weather-app .search-bar {
+    width: 100%;
+    max-width: 600px; /* Limit width for better UX */
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
 }
 
 .weather-app .search-bar input {
@@ -29,8 +37,7 @@
     font-size: 1em;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 100%;
-    max-width: 400px;
+    width: 80%;
 }
 
 .weather-app .search-bar button {
@@ -49,26 +56,90 @@
     background-color: #0056b3;
 }
 
-.weather-app p {
-    text-align: center;
-    font-size: 1.2em;
-}
-
-.weather-app .current-weather, .weather-app .forecast {
-    background: #fff;
+/* Current Weather Styles */
+.current-weather {
+    width: 100%;
     padding: 20px;
     border-radius: 8px;
+    background-color: #dbeaff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Hourly Forecast Styles */
+.hourly-forecast {
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #e6ecf0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
-.weather-app .current-weather h2, .weather-app .forecast h2 {
+.hourly-day-group h3 {
     font-size: 1.5em;
+    color: #007bff;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.hourly-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjusted column size */
+    gap: 10px;
+}
+
+.hourly-row {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Daily Forecast Styles */
+.forecast {
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #e3f2fd;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+
+}
+
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjusted column size */
+    gap: 20px;
+}
+
+.forecast-row {
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.forecast-date {
+    font-size: 1.2em;
+    font-weight: bold;
     color: #007bff;
     margin-bottom: 10px;
 }
 
-.weather-app .current-weather p, .weather-app .forecast p {
-    font-size: 1.2em;
-    margin: 0;
+.forecast-detail p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+@media (max-width: 768px) {
+    .weather-app {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .forecast-grid, .hourly-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
 }

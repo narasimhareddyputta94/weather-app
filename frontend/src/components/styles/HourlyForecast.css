@@ -1,0 +1,42 @@
+/* General Styling */
+.hourly-forecast {
+    background: #f0f4f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Date Headers */
+.hourly-day-group h3 {
+    font-size: 1.5em;
+    color: #007bff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Hourly Grid */
+.hourly-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+/* Each Hourly Row */
+.hourly-row {
+    background: #e6ecf0;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hourly-row p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.hourly-row strong {
+    font-size: 1.1em;
+    color: #007bff;
+}

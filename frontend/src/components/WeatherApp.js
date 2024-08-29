@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 import CurrentWeather from './CurrentWeather';
+import HourlyForecast from './HourlyForecast';
 import Forecast from './Forecast';
 import './styles/WeatherApp.css';
 
 function WeatherApp() {
     const [weatherData, setWeatherData] = useState(null);
     const [forecastData, setForecastData] = useState(null);
+    const [hourlyData, setHourlyData] = useState(null);
     const [error, setError] = useState(null);
 
     const handleSearch = (location) => {
         setError(null);
 
-        // Fetch current weather data from your Spring Boot backend
+        // Fetch current weather data
         fetch(`http://localhost:8080/api/weather/current?location=${location}`)
             .then(response => {
                 if (!response.ok) {
@@ -30,7 +32,7 @@ function WeatherApp() {
                 setError("Failed to fetch current weather data. Please try again.");
             });
 
-        // Fetch weather forecast data from your Spring Boot backend
+        // Fetch daily forecast data
         fetch(`http://localhost:8080/api/weather/forecast?location=${location}`)
             .then(response => {
                 if (!response.ok) {
@@ -40,12 +42,30 @@ function WeatherApp() {
             })
             .then(data => {
                 console.log("Forecast data received:", data);
-                setForecastData(data);
+                setForecastData(data.daily);
             })
             .catch(error => {
                 console.error("Error fetching forecast:", error);
                 setForecastData(null);
                 setError("Failed to fetch weather forecast. Please try again.");
+            });
+
+        // Fetch hourly forecast data
+        fetch(`http://localhost:8080/api/weather/hourly?location=${location}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error fetching hourly forecast: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Hourly forecast data received:", data);
+                setHourlyData(data.hourly);
+            })
+            .catch(error => {
+                console.error("Error fetching hourly forecast:", error);
+                setHourlyData(null);
+                setError("Failed to fetch hourly forecast. Please try again.");
             });
     };
 
@@ -54,7 +74,8 @@ function WeatherApp() {
             <h1>Weather App</h1>
             <SearchBar onSearch={handleSearch} />
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            {weatherData ? <CurrentWeather data={weatherData} /> : <p>Loading current weather...</p>}
+            {weatherData && <CurrentWeather data={weatherData} />}
+            {hourlyData && <HourlyForecast data={hourlyData} />}
             {forecastData && <Forecast data={forecastData} />}
         </div>
     );
